@@ -8,6 +8,7 @@ import Button from "@/components/common/Button";
 import {useEffect, useState} from "react";
 import {PROPERTY_CATEGORIES} from "@/interfaces";
 import filter from "@/public/assets/Filter.svg";
+import Link from "next/link";
 
 
 
@@ -85,7 +86,9 @@ export default function Home() {
         {/* Card section */}
         <div className="pt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filterData.map((property,idx) => (
-                <Card name={property.name} address={property.address} rating={property.rating} category={property.category} price={property.price} offers={property.offers} image={property.image} discount={property.discount} />
+                <Link key={idx} href={`/property/${property.name}`}>
+                    <Card key={idx} name={property.name} address={property.address} rating={property.rating} category={property.category} price={property.price} offers={property.offers} image={property.image} discount={property.discount} />
+                </Link>
             ))}
         </div>
 
